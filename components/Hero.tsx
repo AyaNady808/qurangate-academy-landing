@@ -73,7 +73,7 @@ export default function Hero() {
           {/* Mihrab arch frame */}
           <div className="relative mx-auto w-full max-w-md">
             <div className="relative aspect-[4/5] overflow-hidden rounded-t-[180px] rounded-b-3xl bg-gradient-to-br from-emerald-700 to-emerald-800 p-1 shadow-soft">
-              <div className="grid h-full w-full place-items-center rounded-t-[176px] rounded-b-[20px] bg-[linear-gradient(135deg,#143824,#1C4B32_55%,#2F7A52)]">
+              <div className="relative grid h-full w-full place-items-center rounded-t-[176px] rounded-b-[20px] bg-[linear-gradient(135deg,#143824,#1C4B32_55%,#2F7A52)]">
                 {/* decorative geometric ring */}
                 <div
                   aria-hidden
@@ -84,15 +84,15 @@ export default function Hero() {
                   className="absolute inset-10 rounded-t-[150px] rounded-b-xl border border-gold-400/10"
                 />
 
-                <div className="relative mx-auto w-full max-w-[78%] px-4 text-center">
+                <div className="relative flex w-full flex-col items-center px-6 text-center">
                   <div
-                    className="mx-auto font-arabic text-5xl leading-none text-gold-400 sm:text-6xl"
-                    style={{ wordBreak: "keep-all" }}
+                    className="font-arabic text-2xl font-bold leading-[1.6] text-gold-400 sm:text-3xl"
                     dir="rtl"
+                    lang="ar"
                   >
-                    ﷽
+                    بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
                   </div>
-                  <p className="mt-6 font-display text-base italic text-sand-100 sm:text-lg">
+                  <p className="mt-7 max-w-[85%] font-display text-base italic text-sand-100 sm:text-lg">
                     &quot;The best of you are those who learn the Quran and teach it.&quot;
                   </p>
                   <p className="mt-3 text-xs text-sand-200/80 sm:text-sm">— Sahih al-Bukhari</p>
