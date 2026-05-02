@@ -84,14 +84,18 @@ export default function Hero() {
                   className="absolute inset-10 rounded-t-[150px] rounded-b-xl border border-gold-400/10"
                 />
 
-                <div className="relative px-8 text-center">
-                  <div className="font-arabic text-7xl text-gold-400 sm:text-8xl" dir="rtl">
+                <div className="relative mx-auto w-full max-w-[78%] px-4 text-center">
+                  <div
+                    className="mx-auto font-arabic text-5xl leading-none text-gold-400 sm:text-6xl"
+                    style={{ wordBreak: "keep-all" }}
+                    dir="rtl"
+                  >
                     ﷽
                   </div>
-                  <p className="mt-6 font-display text-lg italic text-sand-100">
+                  <p className="mt-6 font-display text-base italic text-sand-100 sm:text-lg">
                     &quot;The best of you are those who learn the Quran and teach it.&quot;
                   </p>
-                  <p className="mt-3 text-sm text-sand-200/80">— Sahih al-Bukhari</p>
+                  <p className="mt-3 text-xs text-sand-200/80 sm:text-sm">— Sahih al-Bukhari</p>
                 </div>
               </div>
             </div>
