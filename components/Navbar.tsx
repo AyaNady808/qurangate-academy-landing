@@ -36,11 +36,11 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2.5">
           <span
             aria-hidden
-            className="block h-10 w-10 rounded-lg bg-white shadow-soft ring-1 ring-emerald-900/5 dark:ring-emerald-400/10"
+            className="block h-10 w-10 rounded-xl shadow-soft dark:shadow-soft-dark"
             style={{
               backgroundImage: "url(/logo.jpg)",
-              backgroundSize: "165%",
-              backgroundPosition: "50% 24%",
+              backgroundSize: "175%",
+              backgroundPosition: "50% 22%",
               backgroundRepeat: "no-repeat",
             }}
           />
