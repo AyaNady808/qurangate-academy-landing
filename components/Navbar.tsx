@@ -33,18 +33,17 @@ export default function Navbar() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-emerald-700 text-white shadow-soft">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z" />
-            </svg>
-          </span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <span
+            aria-hidden
+            className="block h-10 w-10 rounded-lg bg-white shadow-soft ring-1 ring-emerald-900/5 dark:ring-emerald-400/10"
+            style={{
+              backgroundImage: "url(/logo.jpg)",
+              backgroundSize: "165%",
+              backgroundPosition: "50% 24%",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
           <span className="font-display text-lg font-semibold text-emerald-800 dark:text-sand-50">
             QuranGate <span className="text-gold-500 dark:text-gold-400">Academy</span>
           </span>
