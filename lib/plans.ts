@@ -1,68 +1,89 @@
 // Edit this file to change pricing, plan names, or features.
-// Each plan needs: id, name, monthly price, sessions/week, minutes/class,
-// features[], and an optional `highlight` boolean for "Most Popular".
+// Each plan needs: id, name, title, monthly price, sessions/week, minutes/class,
+// features[], color (for the gradient theme), and an optional `highlight` flag.
+
+export type PlanColor = "blue" | "green" | "emerald" | "purple" | "orange";
 
 export type Plan = {
   id: string;
-  name: string;
+  name: string;        // Short label used on buttons, e.g. "Plan A".
+  title: string;       // Card headline, e.g. "One Class Per Week".
   monthlyPrice: number;
   sessionsPerWeek: number;
   minutesPerClass: number;
-  description: string;
   features: string[];
   highlight?: boolean;
+  color: PlanColor;
 };
+
+const commonFeatures = [
+  "Free trial class",
+  "Native Arabic instructor",
+  "Any time you prefer",
+  "Lesson 1 to 1",
+  "Personalized learning pace",
+  "WhatsApp support",
+];
 
 export const plans: Plan[] = [
   {
-    id: "basic",
-    name: "Basic",
-    monthlyPrice: 30,
+    id: "plan-a",
+    name: "Plan A",
+    title: "One Class Per Week",
+    monthlyPrice: 18,
+    sessionsPerWeek: 1,
+    minutesPerClass: 30,
+    features: commonFeatures,
+    color: "blue",
+  },
+  {
+    id: "plan-b",
+    name: "Plan B",
+    title: "Two Classes Per Week",
+    monthlyPrice: 37,
     sessionsPerWeek: 2,
     minutesPerClass: 30,
-    description: "A gentle start for new students.",
-    features: [
-      "2 live sessions per week",
-      "30 minutes per session",
-      "Basic Quran reading",
-      "Tajweed fundamentals",
-      "Progress tracking",
-    ],
+    features: commonFeatures,
+    color: "green",
   },
   {
-    id: "standard",
-    name: "Standard",
+    id: "plan-c",
+    name: "Plan C",
+    title: "Three Classes Per Week",
     monthlyPrice: 50,
     sessionsPerWeek: 3,
-    minutesPerClass: 45,
-    description: "Our most popular plan for steady, real progress.",
-    features: [
-      "3 live sessions per week",
-      "45 minutes per session",
-      "Quran reading & memorization",
-      "Advanced Tajweed rules",
-      "Weekly progress reports",
-      "Homework assignments",
-    ],
+    minutesPerClass: 30,
+    features: commonFeatures,
     highlight: true,
+    color: "emerald",
   },
   {
-    id: "premium",
-    name: "Premium",
-    monthlyPrice: 70,
-    sessionsPerWeek: 5,
-    minutesPerClass: 60,
-    description: "Daily classes for serious memorization (Hifz).",
-    features: [
-      "5 live sessions per week",
-      "60 minutes per session",
-      "Intensive memorization program",
-      "Perfect Tajweed mastery",
-      "Daily progress tracking",
-      "Personalized study plan",
-      "24/7 teacher support",
-    ],
+    id: "plan-d",
+    name: "Plan D",
+    title: "Four Classes Per Week",
+    monthlyPrice: 68,
+    sessionsPerWeek: 4,
+    minutesPerClass: 30,
+    features: commonFeatures,
+    color: "purple",
   },
+  {
+    id: "plan-e",
+    name: "Plan E",
+    title: "Five Classes Per Week",
+    monthlyPrice: 82,
+    sessionsPerWeek: 5,
+    minutesPerClass: 30,
+    features: commonFeatures,
+    color: "orange",
+  },
+];
+
+export const sharedBenefits = [
+  "Native Arabic instructors",
+  "One-on-one lessons",
+  "Flexible scheduling",
+  "Free trial class",
 ];
 
 // 20% off when billed annually (12 months at the discounted rate).
