@@ -13,8 +13,9 @@ export default function BookPage() {
           <span className="eyebrow">Free Trial</span>
           <h1 className="h-display mt-3">Book your free 30-min class.</h1>
           <p className="mt-4 text-ink-700 dark:text-sand-100/80">
-            Fill in your details and we&apos;ll match you with a certified
-            teacher within 24 hours. No card needed.
+            Pick a plan, choose your teacher, and tap WhatsApp — we&apos;ll
+            match you with a certified teacher within 24 hours. No forms, no
+            card needed.
           </p>
 
           <ul className="mt-8 grid gap-3 text-sm text-ink-700 dark:text-sand-100/80">

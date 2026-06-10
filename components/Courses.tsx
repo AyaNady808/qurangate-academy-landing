@@ -29,7 +29,7 @@ const courses: {
     ),
   },
   {
-    title: "Tahzib Al-Lisan",
+    title: "Tahzib Al-Lisan (Tajweed)",
     level: "Intermediate",
     audience: "All Ages",
     summary:
@@ -99,7 +99,7 @@ export default function Courses() {
           {courses.map((c) => (
             <Link
               key={c.title}
-              href="/book"
+              href={`/book?course=${encodeURIComponent(c.title)}`}
               className="group relative flex flex-col rounded-2xl border border-emerald-900/5 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-emerald-700/20 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/40 dark:border-night-600 dark:bg-night-800 dark:shadow-soft-dark dark:hover:border-emerald-400/30"
             >
               <div className="flex items-start justify-between gap-3">

@@ -15,7 +15,7 @@ export default function About() {
           </p>
           <ul className="mt-6 grid gap-3 text-sm text-ink-700 dark:text-sand-100/80">
             {[
-              "Ijazah-certified teachers from Al-Azhar and Madinah",
+              "Ijazah-certified teachers from Al-Azhar",
               "1-on-1 private classes — never grouped",
               "Flexible scheduling across all time zones",
               "Female teachers available for sisters and kids",

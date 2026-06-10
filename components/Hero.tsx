@@ -64,7 +64,6 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-semibold uppercase tracking-wider text-ink-500 dark:text-sand-100/50">
             <span>As featured in</span>
             <span className="text-ink-700 dark:text-sand-100">Al-Azhar Network</span>
-            <span className="text-ink-700 dark:text-sand-100">Madinah Alumni</span>
             <span className="text-ink-700 dark:text-sand-100">Quran.com Partners</span>
           </div>
         </div>
