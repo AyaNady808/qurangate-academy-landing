@@ -7,8 +7,11 @@ import {
   monthlyTotal,
   pricePerClass,
   sharedBenefits,
+  formatPrice,
+  currencies,
   ANNUAL_DISCOUNT,
   type PlanColor,
+  type Currency,
 } from "@/lib/plans";
 import { whatsappUrl } from "@/lib/contact";
 
@@ -55,6 +58,7 @@ const themeMap: Record<
 
 export default function Plans() {
   const [billing, setBilling] = useState<Billing>("monthly");
+  const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
     <section id="plans" className="section bg-emerald-50/60 dark:bg-night-900">
@@ -67,7 +71,10 @@ export default function Plans() {
           </p>
         </div>
 
-        <BillingToggle value={billing} onChange={setBilling} />
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <BillingToggle value={billing} onChange={setBilling} />
+          <CurrencyToggle value={currency} onChange={setCurrency} />
+        </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {plans.map((p) => {
@@ -98,7 +105,7 @@ export default function Plans() {
                 >
                   <div className="flex items-baseline justify-center gap-1">
                     <span className="font-display text-4xl font-bold leading-none">
-                      ${price}
+                      {formatPrice(price, currency)}
                     </span>
                     <span className="text-sm font-medium opacity-90">
                       /month
@@ -106,7 +113,7 @@ export default function Plans() {
                   </div>
                   {showSavings && (
                     <div className="mt-1 text-xs font-medium text-white/80 line-through">
-                      ${original}
+                      {formatPrice(original, currency)}
                     </div>
                   )}
                 </div>
@@ -164,12 +171,12 @@ export default function Plans() {
 
                   {showSavings && (
                     <div className="mt-4 text-center text-[11px] font-semibold text-gold-500 dark:text-gold-400">
-                      ≈ ${perClass}/class · Save {Math.round(ANNUAL_DISCOUNT * 100)}%
+                      ≈ {formatPrice(perClass, currency)}/class · Save {Math.round(ANNUAL_DISCOUNT * 100)}%
                     </div>
                   )}
 
                   <Link
-                    href={`/book?plan=${p.id}&billing=${billing}`}
+                    href={`/book?plan=${p.id}&billing=${billing}&currency=${currency}`}
                     className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold shadow-soft transition focus:outline-none focus:ring-2 ${theme.button}`}
                   >
                     Choose {p.name}
@@ -258,7 +265,7 @@ function BillingToggle({
   onChange: (v: Billing) => void;
 }) {
   return (
-    <div className="mt-8 inline-flex items-center gap-1 rounded-full border border-emerald-900/10 bg-white p-1 shadow-soft dark:border-night-600 dark:bg-night-800 dark:shadow-soft-dark">
+    <div className="inline-flex items-center gap-1 rounded-full border border-emerald-900/10 bg-white p-1 shadow-soft dark:border-night-600 dark:bg-night-800 dark:shadow-soft-dark">
       {(["monthly", "annual"] as const).map((b) => {
         const active = value === b;
         return (
@@ -279,9 +286,39 @@ function BillingToggle({
                   active ? "bg-gold-400 text-emerald-900" : "bg-gold-400/20 text-gold-500 dark:text-gold-400"
                 }`}
               >
-                SAVE 20%
+                SAVE {Math.round(ANNUAL_DISCOUNT * 100)}%
               </span>
             )}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function CurrencyToggle({
+  value,
+  onChange,
+}: {
+  value: Currency;
+  onChange: (v: Currency) => void;
+}) {
+  return (
+    <div className="inline-flex items-center gap-1 rounded-full border border-emerald-900/10 bg-white p-1 shadow-soft dark:border-night-600 dark:bg-night-800 dark:shadow-soft-dark">
+      {(Object.keys(currencies) as Currency[]).map((c) => {
+        const active = value === c;
+        return (
+          <button
+            key={c}
+            type="button"
+            onClick={() => onChange(c)}
+            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              active
+                ? "bg-emerald-700 text-white dark:bg-emerald-500"
+                : "text-ink-700 hover:text-emerald-700 dark:text-sand-100/80 dark:hover:text-emerald-300"
+            }`}
+          >
+            {currencies[c].symbol} {c}
           </button>
         );
       })}

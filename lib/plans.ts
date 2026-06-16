@@ -86,8 +86,31 @@ export const sharedBenefits = [
   "Free trial class",
 ];
 
-// 20% off when billed annually (12 months at the discounted rate).
-export const ANNUAL_DISCOUNT = 0.2;
+// 10% off when billed annually (12 months at the discounted rate).
+export const ANNUAL_DISCOUNT = 0.1;
+
+// Prices are authored in USD. Other currencies are derived via these rates —
+// adjust the rate to match your provider's exchange rate when needed.
+export type Currency = "USD" | "EUR";
+
+export const currencies: Record<
+  Currency,
+  { code: Currency; symbol: string; rate: number }
+> = {
+  USD: { code: "USD", symbol: "$", rate: 1 },
+  EUR: { code: "EUR", symbol: "€", rate: 0.92 },
+};
+
+export const isCurrency = (value?: string | null): value is Currency =>
+  value === "USD" || value === "EUR";
+
+// Convert a USD amount to the given currency, rounded to a whole unit.
+export const convert = (usd: number, currency: Currency) =>
+  Math.round(usd * currencies[currency].rate);
+
+// Format a USD amount in the given currency, e.g. "$18" or "€17".
+export const formatPrice = (usd: number, currency: Currency) =>
+  `${currencies[currency].symbol}${convert(usd, currency)}`;
 
 export const findPlan = (id?: string | null) =>
   plans.find((p) => p.id === id) ?? null;

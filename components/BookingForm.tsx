@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { plans, findPlan } from "@/lib/plans";
+import { plans, findPlan, formatPrice, isCurrency } from "@/lib/plans";
 import { whatsappUrl } from "@/lib/contact";
 
 type Gender = "male" | "female";
@@ -22,6 +22,8 @@ export default function BookingForm() {
   const params = useSearchParams();
   const initialPlanId = params.get("plan") ?? "plan-c";
   const initialCourse = params.get("course") ?? "";
+  const currencyParam = params.get("currency");
+  const currency = isCurrency(currencyParam) ? currencyParam : "USD";
 
   const [planId, setPlanId] = useState(initialPlanId);
   const [course, setCourse] = useState(
@@ -46,7 +48,10 @@ export default function BookingForm() {
   const teacherLabel = gender === "female" ? "Female" : "Male";
   const planLine = isCustom
     ? "Plan: Customized Plan (pricing to be discussed)"
-    : `Plan: ${selected.name} — ${selected.title} ($${selected.monthlyPrice}/month)`;
+    : `Plan: ${selected.name} — ${selected.title} (${formatPrice(
+        selected.monthlyPrice,
+        currency
+      )}/month)`;
   const message = [
     `Assalamu alaikum, my name is ${name.trim()}.`,
     "I'd like to book a free trial class.",
@@ -124,7 +129,7 @@ export default function BookingForm() {
               </div>
               <div className="text-right">
                 <div className="font-display text-lg font-semibold text-ink-900 dark:text-sand-50">
-                  ${p.monthlyPrice}
+                  {formatPrice(p.monthlyPrice, currency)}
                   <span className="text-xs font-normal text-ink-500 dark:text-sand-100/60">
                     {" "}/ mo
                   </span>

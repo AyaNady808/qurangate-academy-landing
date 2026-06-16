@@ -1,13 +1,15 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { findPlan } from "@/lib/plans";
+import { findPlan, formatPrice, isCurrency } from "@/lib/plans";
 
 export default function ConfirmationContent() {
   const params = useSearchParams();
   const plan = findPlan(params.get("plan"));
   const name = params.get("name") ?? "";
   const gender = params.get("gender");
+  const currencyParam = params.get("currency");
+  const currency = isCurrency(currencyParam) ? currencyParam : "USD";
   const firstName = name.trim().split(" ")[0];
   const teacherLabel =
     gender === "male" ? "Male teacher" : gender === "female" ? "Female teacher" : null;
@@ -26,7 +28,7 @@ export default function ConfirmationContent() {
         {plan && (
           <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-200">
             Selected plan:&nbsp;<span className="font-semibold">{plan.name}</span> —{" "}
-            ${plan.monthlyPrice}
+            {formatPrice(plan.monthlyPrice, currency)}
             <span className="text-xs text-ink-500 dark:text-sand-100/50"> / mo</span>
           </div>
         )}
