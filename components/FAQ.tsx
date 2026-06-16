@@ -1,7 +1,7 @@
 const faqs = [
   {
     q: "Are your teachers male or female?",
-    a: "Both. We have certified male and female teachers — when you book, you can request the gender that fits you or your child best. Sisters and children are usually paired with a female teacher by default.",
+    a: "Both. We have certified male and female teachers — when you book, you can request the gender that fits you or your child best. Sisters are usually paired with a female teacher by default.",
   },
   {
     q: "What happens during the free trial class?",
@@ -9,15 +9,11 @@ const faqs = [
   },
   {
     q: "Do you teach kids? What's the youngest age?",
-    a: "Yes — we teach children from age 5 and up. Our teachers are specially trained to keep kids engaged, with short lessons, games, and small wins each session. Parents get a weekly progress report.",
+    a: "Yes — we teach children from age 5 and up. Our teachers are specially trained to keep kids engaged, with short lessons, games, and small wins each session. Parents get a monthly progress report.",
   },
   {
     q: "What if I'm a complete beginner and don't know any Arabic?",
     a: "Most of our students start exactly there. We begin with the Arabic alphabet (Noorani Qaida), then move into Quran reading, then Tajweed and memorization. Each step is paced to you — no rushing.",
-  },
-  {
-    q: "Can I cancel anytime?",
-    a: "Yes. There are no long-term contracts. Cancel from your dashboard or by messaging us — your subscription stops at the end of the current billing cycle.",
   },
   {
     q: "How do I pay? Is it secure?",
